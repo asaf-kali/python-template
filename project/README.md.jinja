@@ -1,0 +1,31 @@
+# {{ project_name }}
+
+{% if repository_provider == "gitlab.com" -%}
+[![pipeline status](https://gitlab.com/{{ repository_namespace }}/{{ repository_name }}/badges/main/pipeline.svg)](https://gitlab.com/{{ repository_namespace }}/{{ repository_name }}/pipelines)
+[![coverage report](https://gitlab.com/{{ repository_namespace }}/{{ repository_name }}/badges/main/coverage.svg)](https://gitlab.com/{{ repository_namespace }}/{{ repository_name }}/commits/master)
+{% elif repository_provider == "github.com" -%}
+[![Tests](https://github.com/{{ repository_namespace }}/{{ repository_name }}/actions/workflows/tests.yml/badge.svg)](https://github.com/{{ repository_namespace }}/{{ repository_name }}/actions/workflows/tests.yml)
+[![Lint](https://github.com/{{ repository_namespace }}/{{ repository_name }}/actions/workflows/lint.yml/badge.svg)](https://github.com/{{ repository_namespace }}/{{ repository_name }}/actions/workflows/lint.yml)
+{% endif -%}
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+{{ project_description }}
+
+## Local development
+
+### Environment Setup
+
+1. Install `Python 3.10`.
+2. Create virtual environment (and set source).
+3. Run `make install`.
+
+### Workflow
+
+1. Lint using `make lint`.
+2. Run tests using `make test`.
+3. Run tests with coverage using `make coverage`.
+
+## Deployment
+
+
+## Other

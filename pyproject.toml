@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "kali-template"
+version = "0.1.0"
+description = ""
+authors = ["Asaf Kali <asaf.kali@mail.huji.ac.il>"]
+readme = "README.md"
+packages = [{ include = "python_template" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

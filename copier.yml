@@ -1,0 +1,67 @@
+### Configuration ###
+
+_subdirectory: project
+_templates_suffix: .jinja
+_tasks:
+  - make lock
+  - git add .
+  - make install
+
+### Basic ###
+
+project_name:
+  type: str
+  help: Your project name
+
+project_description:
+  type: str
+  help: Your project description
+
+### Author ###
+
+author_name:
+  type: str
+  help: Your full name
+  default: "Asaf Kali"
+
+author_email:
+  type: str
+  help: Your email
+  default: "asaf.kali@mail.huji.ac.il"
+
+author_username:
+  type: str
+  help: Your username
+  default: "asaf-kali"
+
+### Repository ###
+
+repository_provider:
+  type: str
+  help: Your repository provider
+  default: github.com
+  choices:
+    - github.com
+    - gitlab.com
+
+repository_namespace:
+  type: str
+  help: Your repository namespace
+  default: "{{ author_username }}"
+
+repository_name:
+  type: str
+  help: Your repository name
+  default: "{{ project_name|lower|replace('_', '-')|replace(' ', '-') }}"
+
+### Python ###
+
+python_module_name:
+  type: str
+  help: Your Python package import name
+  default: "{{ repository_name|replace('-', '_') }}"
+
+python_cli_command:
+  type: str
+  help: Your CLI name if any (for use in the shell)
+  default: "{{ repository_name }}"

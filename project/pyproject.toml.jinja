@@ -1,0 +1,74 @@
+# Poetry
+
+[tool.poetry]
+name = "{{project_name}}"
+version = "0.1.0"
+description = "{{project_description}}"
+authors = ["{{author_name}} <{{author_email}}>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "<2.0.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.1.1"
+coverage = { version = "^6.5.0", extras = ["toml"] }
+parameterized = "^0.8.1"
+
+[tool.poetry.group.lint.dependencies]
+ruff = "^0.0.236"
+black = "^22.12.0"
+isort = "^5.11.4"
+mypy = "^0.991"
+pylint = "2.15.10"
+types-requests = "^2.28.11.8"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^2.17"
+copier = "^6.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# Test
+
+[tool.pytest.ini_options]
+pythonpath = "service"
+addopts = "-s --disable-pytest-warnings"
+
+[tool.coverage.run]
+omit = ["tests/*"]
+source = ["."]
+
+# Lint
+
+[tool.ruff]
+line-length = 120
+select = ["B", "C", "E", "F", "W"]
+ignore = []
+exclude = ["local", ".deployment"]
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+src_paths = ["."]
+skip = ["__init__.py", ".deployment/"]
+
+[tool.mypy]
+ignore_missing_imports = true
+exclude = ["local/", ".deployment/"]
+
+[tool.pylint]
+max-line-length = 120
+disable = [
+    "C0114",
+    "C0115",
+    "C0116",
+    "R0903",
+    "W1203",
+]
+extension-pkg-allow-list = ["pydantic"]
