@@ -3,9 +3,7 @@
 _subdirectory: project
 _templates_suffix: .jinja
 _tasks:
-  - make lock
-  - git add -A
-  - make install
+  - python scripts/post_generation.py
 
 ### Basic ###
 
