@@ -4,7 +4,7 @@ _subdirectory: project
 _templates_suffix: .jinja
 _tasks:
   - make lock
-  - git add .
+  - git add -A
   - make install
 
 ### Basic ###
